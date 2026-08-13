@@ -2,11 +2,11 @@ import { useState } from "react"
 
 function Todo() {
     const [tarefas, setTarefas] = useState([
-        { id: 1, titulo: 'Estudar React', concluido: false, data: new Date().toISOString().split('T')[0] },
-        { id: 2, titulo: 'Entrar no mercado', concluido: false, data: new Date().toISOString().split('T')[0] },
+        { id: 1, titulo: 'Estudar React', concluido: false, data: new Date().toLocaleDateString()},
+        { id: 2, titulo: 'Entrar no mercado', concluido: false, data: new Date().toLocaleDateString()},
     ])
-    const [textInput, setTextInput] = useState('')
 
+    const [textInput, setTextInput] = useState('')
 
     const adicionarTarefa = () => {
 
