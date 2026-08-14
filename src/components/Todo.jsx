@@ -5,7 +5,6 @@ function Todo() {
         { id: 1, titulo: 'Estudar React', concluido: false, data: new Date().toLocaleDateString().split('/').join('-') },
         { id: 2, titulo: 'Entrar no mercado', concluido: false, data: new Date().toLocaleDateString().split('/').join('-') },
     ])
-
     const [textInput, setTextInput] = useState('')
 
     const adicionarTarefa = () => {
@@ -35,7 +34,7 @@ function Todo() {
                     adicionarTarefa()
                 }
             }} type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} /> &nbsp;
-            <button onClick={adicionarTarefa}>Adicionar</button>
+            <button onClick={adicionarTarefa}>Adicionar</button><br />
             {tarefas.map(t =>
                 <>
                     <p key={t.id}> <hr />Tarefa: {t.titulo} <br /> Criada em: {t.data} <br /> Tarefa Concluída: {t.concluido ? '✔️' : '❌'}</p>
