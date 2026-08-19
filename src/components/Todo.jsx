@@ -8,6 +8,7 @@ function Todo() {
     const [textInput, setTextInput] = useState('')
 
     const adicionarTarefa = () => {
+	if(textInput.trim() === ''){return}
 
         const novaTarefa = {
             id: Date.now(),
@@ -26,6 +27,11 @@ function Todo() {
         setTarefas(novo)
     }
 
+    const tarefaConcluida = (id) => {
+        const tarefa = tarefas.map(t => t.id === id ? {...t, concluido: !t.concluido}: t)        
+        setTarefas(tarefa)
+    }
+
     return (
         <div>
             <h2>A minha To-do List em React</h2>
@@ -36,12 +42,12 @@ function Todo() {
             }} type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} /> &nbsp;
             <button onClick={adicionarTarefa}>Adicionar</button><br />
             {tarefas.map(t =>
-                <>
-                    <p key={t.id}> <hr />Tarefa: {t.titulo} <br /> Criada em: {t.data} <br /> Tarefa Concluída: {t.concluido ? '✔️' : '❌'}</p>
+                <div key={t.id}>
+                    <hr /><p onClick={() => tarefaConcluida(t.id)}> Tarefa: {t.titulo} <br /> Criada em: {t.data} <br /> Tarefa Concluída: {t.concluido ? '✔️' : '❌'}</p>
                     <button>Editar</button>&nbsp;
                     <button onClick={() => apagarTarefa(t.id)}>Apagar</button>
-                </>
-            )}
+                </div>
+            )}<hr />
         </div>
     )
 }
